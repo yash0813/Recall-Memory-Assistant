@@ -2,24 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #FDFBF7;
-  --foreground: #1C1917;
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+  }
+}
 
-  --font-inter: var(--font-inter);
-  --font-merriweather: var(--font-merriweather);
+body {
+  @apply bg-stone-950 text-stone-100 antialiased font-sans;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(255, 165, 0, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(200, 200, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 50, 50, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 @layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+
+  .glass-card {
+    @apply bg-black/20 backdrop-blur-md border border-white/5 rounded-2xl shadow-lg hover:bg-black/30 transition-all duration-300;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 h1,
